@@ -1,13 +1,17 @@
 class Solution {
 public:
     vector<int> countBits(int n) {
-        vector<int> dp;
-        dp.push_back(0);
-        for(int i=1; i<=n; i++){
-            if(i%2) dp.push_back(dp[i/2]+1);
-            else dp.push_back(dp[i/2]);
+        vector<int> rt(n+1, 0);
+        rt[0] = 0;
+        
+        int exp2 = 1;
+        for(int i = 1; i<n+1; i++){
+            if(i == exp2*2){
+                exp2 *= 2;
+            }
+            rt[i] = rt[i-exp2]+1;
         }
         
-        return dp;
+        return rt;
     }
 };
