@@ -10,9 +10,6 @@ public:
             else res.push_back(stoi(i));
         }
         
-        int sum = 0;
-        for(const int& i : res) sum += i;
-        
-        return sum;
+        return accumulate(res.begin(), res.end(), 0);
     }
 };
